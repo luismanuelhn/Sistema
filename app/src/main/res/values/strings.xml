@@ -24,4 +24,16 @@
     <string name="Compartir">Compartir</string>
 
 
+    <!--REGISTRO DE ADMINISTRADORES -->
+    <string name="RegistroTXT">Registro de administradores</string>
+    <string name="Correo">Correo electronico</string>
+    <string name="Password">Contraseña</string>
+    <string name="Nombres">Nombres completos</string>
+    <string name="Apellidos">Apellidos completos</string>
+    <string name="Edad">Edad</string>
+    <string name="FechaRegistro">Fecha de Registro</string>
+    <string name="Registrar">Registrar</string>
+
+
+
 </resources>
