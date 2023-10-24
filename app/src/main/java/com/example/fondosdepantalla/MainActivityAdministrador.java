@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -17,9 +18,13 @@ import com.example.fondosdepantalla.FragmentosAdministrador.ListarAdmin;
 import com.example.fondosdepantalla.FragmentosAdministrador.PerfilAdmin;
 import com.example.fondosdepantalla.FragmentosAdministrador.RegistrarAdmin;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivityAdministrador extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
        DrawerLayout drawerLayout;
+       FirebaseAuth firebaseAuth;
+       FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,13 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        user=firebaseAuth.getCurrentUser();
+
+
+
+
         if(savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_containerA,
                     new InicioAdmin()).commit();
@@ -78,5 +90,23 @@ public class MainActivityAdministrador extends AppCompatActivity implements Navi
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        ComprobandoInicioSecion();
+        super.onStart();
+    }
+
+    private void ComprobandoInicioSecion(){
+        if(user!=null){
+            //SI EL ADMINISTRADOR A INICIADO SESION
+            Toast.makeText(this, "Se ha iniciado sesion", Toast.LENGTH_SHORT).show();
+        }else {
+            //si no ha iniciado sesin, esporque el usuario es cliente
+            startActivity(new Intent(MainActivityAdministrador.this,MainActivity.class));
+            finish();
+        }
+
     }
 }

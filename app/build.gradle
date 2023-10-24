@@ -39,7 +39,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation 'com.airbnb.android:lottie:4.2.1' /*ANIMACIONES CON LOTTIE*/
     implementation 'com.google.android.material:material:1.6.1'
-    implementation 'com.google.firebase:firebase-database:20.2.2' /*BASE DE DATOS DE FIREBASE*/
-    implementation'com.google.firebase:firebase-auth:22.1.2'  /*AUTENTIFICACION DE FIREBASE*/
+    implementation 'com.google.firebase:firebase-database:20.3.0' /*BASE DE DATOS DE FIREBASE*/
+    implementation'com.google.firebase:firebase-auth:22.2.0'  /*AUTENTIFICACION DE FIREBASE*/
 
 }
